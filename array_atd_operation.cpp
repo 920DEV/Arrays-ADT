@@ -22,7 +22,34 @@ arr->array=new int[arr->size];                          // Allocating array to t
     
 };
 
+int binary_search(struct Array *arr,int key){
+     
+int lower_value=0;                  // initializig lower index value.
+int higher_value=arr->size-1;       // initializing higher index value of the array.
+int mid_val;                        // mid term vlaue.
 
+
+
+while (lower_value<=higher_value)
+{
+    int mid_val= (lower_value+higher_value)/2;
+
+    if(key==arr->array[mid_val]){
+        return mid_val;             // it will return the index whre the searched element is present.
+    }
+    else if (key<=arr->array[mid_val])
+    {
+        higher_value=mid_val-1;
+
+    }
+    else
+        lower_value=mid_val+1;
+    
+}
+return -1;
+
+
+}
 int append(struct Array *arr){      // Append will add extra element at the end of the array,
 int elem;                           // "elem" is the element we wants to add .
 
@@ -150,13 +177,18 @@ cin>>x;
 linear_srch(&arr,x);
     
 
-
+case 2:
+int key;
+cout<<"Enter the element you want to search:";
+cin>> key;
+cout<<"The element you have searched in an array is present at the index no : "<<binary_search(&arr,key)<<endl;
     break;
+    
     case 3:
     append(&arr);
     break;
 
-    case 4:
+    case 4:                             
     insert(&arr);
     break;
 
