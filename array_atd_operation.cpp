@@ -17,11 +17,24 @@ arr->array=new int[arr->size];                          // Allocating array to t
     for (int i = 0; i <arr->size; i++)
     {
         cin>>arr->array[i];
-        cout<<"\n";
     }
     
 };
+// "LINEAR SEARCH "
+int linear_srch(struct Array *arr,int x){            // Note: for doing linear search all the elements must be unique.
 
+for (int i=0; i <= arr->size;i++){
+    if(x==arr->array[i]){
+
+    return i;
+    } 
+    else
+    return -1;
+
+}
+}
+
+// "BINARY SEARCH"
 int binary_search(struct Array *arr,int key){
      
 int lower_value=0;                  // initializig lower index value.
@@ -50,6 +63,8 @@ return -1;
 
 
 }
+
+// "APPENDING ELEMENT"
 int append(struct Array *arr){      // Append will add extra element at the end of the array,
 int elem;                           // "elem" is the element we wants to add .
 
@@ -61,6 +76,7 @@ cin>>elem;
 return arr->array[arr->size++]=elem;   // incrementing the size of the array and assigning to the elem.
    
 };
+// "INSERTION OF ELEMENT"
 
 void insert(struct Array *arr){         // Insertion of an element.
      int index, elem;
@@ -86,7 +102,7 @@ void insert(struct Array *arr){         // Insertion of an element.
     }
     
 }
-
+// "INSERTION OF ELEMENT"
 int dlt(struct Array *arr){              // for deleting an element in an array.
 int index,x;
 cout<<"At what index You want to delete the element:";
@@ -105,37 +121,7 @@ return x;
 }
 };
 
-// int swap(struct Array *arr,int x){            // using transposition to replace the recently search index. to lower index. so it will consume less time another time.
-// int temp;
-//  for (int i = 0; i < arr->size; i++){
-//         if (x==arr->array[i])
-//         {
-//             temp=arr->array[i];
-//                 arr->array[i]=arr->array[i-1];
-//                 arr->array[i-1]=temp;
-
-//         } 
-            
-//     }
-
-//      cout<<"The index value of searched element has changed"<<endl;
-  
-// }
-
-int linear_srch(struct Array *arr,int x){            // Note: for doing linear search all the elements must be unique.
-
-for (int i=0; i < arr->size;i++){
-    if(x==arr->array[i]){
-        cout<<"The element  is present in the array"<<endl;
-
-    return i;
-    } 
-    return -1;
-
-}
-}
-
-
+// "DISPLAYING OF ARRAY"
 
 void display(struct Array arr){
         printf("The element in the array is \n");
@@ -174,7 +160,9 @@ while (true)
     int x;
 cout<<"Enter the Element you want to search :";
 cin>>x;
-linear_srch(&arr,x);
+
+cout<<"The element you want to search in the array is peresent at the index: ";
+cout<<linear_srch(&arr,x)<<endl;
     
 
 case 2:
@@ -200,9 +188,6 @@ break;
 
 break;
 
-default:
-    cout<<"You have entered incorrect option , or opt for the exit form the program.";
-        break;
     }
 
  if (option == 7){
