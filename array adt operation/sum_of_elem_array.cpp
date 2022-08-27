@@ -36,13 +36,14 @@ int sum(struct Array arr){
 }
 // Finding the sum of elements in an array using "RECURSION".
 
-int sum_rec( struct Array *arr){
+int sum_rec(Array &array){
+    struct Array *arr;
     int sum1=0;
     if(sum1<=0){
         return 0;
     }
     else
-        return sum(arr->array,arr->size);
+        return sum_rec(arr->array,arr->size);
 }
 int main(){
     struct Array arr;
@@ -53,7 +54,7 @@ input(&arr);
     cout<< "The sum of all the elements in the array is : "<<sum(arr)<<endl;
 
     cout<<"finding sum of all elements using recursion";
-    cout<< "The sum of all the elements in the array is : "<<sum(arr->array,arr->size)<<endl;
+    cout<< "The sum of all the elements in the array is : "<<sum_rec(arr->array,arr->size)<<endl;
 }
 
 

@@ -21,7 +21,17 @@ arr->array=new int[arr->size];                          // Allocating array to t
     
 };
 
+int sorting(struct Array *arr){
 
+    for (int i = 0; i < arr->size; i++)
+    {
+        if(arr->array[i]<=arr->array[i+1]){
+            return true;
+        }
+    }
+    return false;
+    
+}
 // "LINEAR SEARCH "s
 int linear_srch(struct Array *arr){          
 int x;
@@ -43,7 +53,7 @@ return -1;
 
 // "BINARY SEARCH"
 int binary_search(struct Array *arr,int key){                  // Note: for doing binary search all the elements must be unique & Array must be sorted.
-     
+
 int lower_value=0;                  // initializig lower index value.
 int higher_value=arr->size-1;       // initializing higher index value of the array.
 int mid_val;                        // mid term vlaue.
@@ -66,10 +76,11 @@ while (lower_value<=higher_value)
         lower_value=mid_val+1;
     
 }
+     
 return -1;
+     }
 
 
-}
 int get(struct Array arr){                  // in get method we can acess any element in an array through their index no.
 int index;
 cout<<"Enter the index number: ";
@@ -91,6 +102,7 @@ int set(struct Array arr){
     cin>>index;
     int element;
     cout<<"Enter the elemnt you want to replace with: ";
+
     cin>>element;
     if(index>=0 && index<arr.size){
       return  arr.array[index]=element;
@@ -197,6 +209,18 @@ arr->size--;
 return x;
 }
 };
+int reverse(struct Array arr){
+    int temp;
+    for (int i = 0; i < arr.size/2; i++)
+    {
+        temp=arr.array[i];
+        arr.array[i]=arr.array[arr.size-i-1];
+        arr.array[arr.size-i-1]=temp;
+        
+    }
+
+    
+}
 
 // "DISPLAYING OF ARRAY"
 
@@ -228,7 +252,7 @@ while (true)
     // options provide to users.
   cout<<"Enter the Option you want to perform in an array: "<<endl;
   
-    cout<<" 1-> Linear Search.\n 2-> Binary search\n 3-> Append or add an element.\n 4-> Insert an Element \n 5-> Delete an element \n 6-> Display Array.\n 7-> Get the element \n 8-> Replace the element \n 9-> Find maximum \n 10-> Find Mininum \n 11-> Sum of all element \n 12-> Average of sum of all Element \n 14-> For exit "<<endl;
+    cout<<" 1-> Linear Search.\n 2-> Binary search\n 3-> Append or add an element.\n 4-> Insert an Element \n 5-> Delete an element \n 6-> Display Array.\n 7-> Get the element \n 8-> Replace the element \n 9-> Find maximum \n 10-> Find Mininum \n 11-> Sum of all element \n 12-> Average of sum of all Element \n 13-> Reverse of the array. \n 14-> For exit "<<endl;
     int option;
    cin>>option;
 
@@ -284,9 +308,18 @@ cout<<"least element present in the array: "<<min(arr)<<endl;
     break;
 
     case 12:
-    cout<<"Average of all the numbers present in the array is:"<<sum(arr)/2<<endl;
+    cout<<"Average of all the numbers present in the array is:"<<sum(arr)/arr.size<<endl;
+
+    case 13:
+    reverse(arr);
+    break;
 
 
+case 15:
+cout<<sorting(&arr);
+break;
+    default:
+    cout<<"You have entered wrong value.";
     }
  if (option == 14){
     break;
@@ -294,3 +327,4 @@ cout<<"least element present in the array: "<<min(arr)<<endl;
 }
 return 0;
 }
+

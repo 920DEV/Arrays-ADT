@@ -9,9 +9,7 @@ struct Array
 
 };
 
-void input(struct Array *arr){                          // taking input  for the user.
-
-
+void input(struct Array *arr){                          // taking input  for the user.                                                
 
 arr->array=new int[arr->size];                          // Allocating array to the heap,by taking 'array' as address.
 
